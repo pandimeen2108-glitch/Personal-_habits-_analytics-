@@ -1,0 +1,2 @@
+
+Personal Habits Analytics is a simple application used to track daily habits such as sleep, study, exercise, water intake, and screen time. Users can add their daily activities and view their progress through weekly and monthly reports. The main goal of this project is to help users improve their habits and maintain a healthy and productive lifestyle.
