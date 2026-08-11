@@ -1,0 +1,59 @@
+Table role {
+  role_id int [pk]
+  role_name varchar
+  description varchar
+}
+
+Table user {
+  user_id int [pk]
+  name varchar
+  email varchar [unique]
+  password_hash varchar
+  role_id int [ref: > role.role_id]
+  is_active boolean
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table habit_type {
+  habit_type_id int [pk]
+  habit_name varchar [unique]
+  unit varchar
+  description varchar
+}
+
+Table habit_record {
+  record_id int [pk]
+  user_id int [ref: > user.user_id]
+  record_date date
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table habit_log {
+  log_id int [pk]
+  record_id int [ref: > habit_record.record_id]
+  habit_type_id int [ref: > habit_type.habit_type_id]
+  value decimal
+  created_at timestamp
+}
+
+Table habit_goal {
+  goal_id int [pk]
+  user_id int [ref: > user.user_id]
+  habit_type_id int [ref: > habit_type.habit_type_id]
+  target_value decimal
+  period_type varchar
+  start_date date
+  end_date date
+}
+
+Table report {
+  report_id int [pk]
+  user_id int [ref: > user.user_id]
+  report_type varchar
+  period_start date
+  period_end date
+  summary_json text
+  generated_at timestamp
+}
